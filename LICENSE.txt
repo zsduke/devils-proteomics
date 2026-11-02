@@ -1,0 +1,196 @@
+Devil's Proteomics Education and Public Sharing License
+
+Licensor for original code: Zhenyao Sun
+Software title: Devil's Proteomics
+License identifier: LicenseRef-Devils-Proteomics-Education-Public-Sharing-1.0
+License version: 1.0
+Effective date: 2026-11-02
+Authorized release identifier: The release identifier recorded in the
+RELEASE_MANIFEST.json accompanying the specific distribution.
+Authorized release manifest: The RELEASE_MANIFEST.json accompanying that
+specific distribution, identifying its release and the audited covered paths
+and hashes, together with exclusions and third-party license designations.
+That manifest, as issued with the distribution, is the release-specific scope
+reference for this License; no separate unspecified manifest version applies.
+
+Effectiveness
+This License takes effect only for a release for which the actual authorized
+rights holders have approved these terms, completed the release identifier and
+RELEASE_MANIFEST.json described above, and issued this License as the operative
+license for that release. No permission is granted before those conditions are
+satisfied.
+
+1  Scope and reserved prediction technology
+
+"Software" means only the eligible copyrightable materials affirmatively
+identified as covered in the final authorized release manifest, to the extent
+the Licensor has authority to license them. The final manifest, not a
+preliminary subset or package, defines coverage. A directory location,
+repository membership, or download alone does not establish coverage.
+
+"Excluded Materials" means the Licensor's reserved original private prediction
+technology, including private prediction algorithms, trained models, model
+weights, and their implementations. The release manifest must identify these
+exclusions without disclosing confidential content. They are excluded entirely,
+even if accidentally included in a release or manifest. These terms grant no
+right to access, use, reproduce, modify, distribute, or disclose them. Nothing
+requires their disclosure. Any permission requires separate express authority.
+
+This exclusion is not an exemption for a recipient's new improvements or
+validation based on the Software merely because called a private algorithm or
+model. Third-party materials retain their own licenses under section 7.
+
+2  Permitted educational purpose
+
+"Eligible User" means a recognized educational institution, or its enrolled
+students or staff acting within that institution's noncommercial educational
+activities. "Permitted Purpose" means exclusively noncommercial teaching,
+learning, or academic research within those institutional activities, without
+commercial use or commercial advantage. Independent individuals and self-study
+outside that institutional scope are not automatically permitted and require
+separate permission from the relevant rights holders.
+
+Institutional status alone does not authorize an otherwise prohibited activity.
+A school, university, nonprofit, student, staff member, or researcher may not
+rely on its identity to conduct commercial activities.
+
+Commercial use is excluded, including use for a commercial product or business,
+paid analysis or services, consulting, contract research for commercial purposes,
+commercially sponsored or commissioned work advancing commercial interests,
+revenue-generating hosted services, or internal commercial operations. Free
+access or absence of immediate profit does not make such use educational.
+Mixed educational and commercial uses are not a Permitted Purpose. Uses outside
+this scope require separate permission from the relevant rights holders.
+
+3  Conditional copyright permission
+
+Subject to this License, the Licensor grants each Eligible User a worldwide,
+royalty-free, nonexclusive copyright license to use, run, copy, modify, and
+distribute the Software solely for a Permitted Purpose, subject to every
+condition below. No copyright ownership transfers. Rights not expressly granted
+are reserved. No patent license, patent transfer, trademark license, endorsement,
+or right to imply affiliation is granted; truthful attribution remains allowed.
+
+4  Mandatory public sharing
+
+"Covered Work" means every improvement, modification, extension, adaptation,
+and integration based on the Software, including downstream iterations and the
+recipient-created source needed to build and run them. Mere unrelated coexistence
+on the same storage medium does not make independent software a Covered Work.
+
+"Validation" means any testing, verification, benchmarking, reproduction,
+comparison, or evaluation based on the Software or a Covered Work. It includes
+internal-only activity and positive, negative, failed, and inconclusive results.
+
+For each Covered Work and Validation that You create, commission, or control
+in exercising this permission, You must publish the applicable materials
+under section 5, whether or not You distribute the Software or seek publication.
+You must arrange necessary rights before commissioning work. Outsourcing,
+internal-only use, or withholding a paper does not avoid this obligation.
+
+Covered Works must be published with their full corresponding source in the
+preferred form for modification, including changes, integration code, build and
+installation scripts, configuration, interface information, dependency names
+and versions, and practical build and run instructions. Identify any dependency
+not lawfully redistributable and how it can lawfully be obtained. Binaries or
+patches without sufficient corresponding source do not satisfy this duty.
+
+Validation disclosure must include its methods, protocols, tested software
+versions, settings, relevant data and provenance, analysis code and notebooks,
+results, limitations, and other materials reasonably necessary to reproduce and
+understand the work. Section 6 governs legally restricted material.
+
+Publish recipient-owned copyrightable Covered Works under the exact same final
+license text and version, with the same educational-use and sharing conditions.
+Apply those terms to copyrightable Validation materials to the extent You have
+licensing rights. No assignment of contributor copyright is required. Disclosure
+of facts or results does not assert copyright ownership over facts, ideas, or
+other unprotectable material, or create exclusive rights in them. Applicable
+third-party rights, including database rights, remain unaffected.
+
+Make the materials available in a durable public repository or archive intended
+for ongoing access, without payment, individual permission, or access restricted
+to selected people. Do not deliberately withdraw access to defeat this duty;
+perpetual personal hosting or maintenance is not required. Include the
+applicable license, copyright and attribution notices, changes, and release
+identifiers. Redistribution must retain these terms and notices, identify
+modifications, and provide the required source or its direct public location.
+Recipients obtain permissions from the relevant rights holders under the same
+terms; You may not impose additional restrictions on the covered materials.
+
+5  Publication deadline
+
+For each distinct Covered Work or Validation item,
+publication is due at the earlier of (a) 90 calendar days after that item's
+completion or (b) its first external distribution, publication, or service use,
+including making that item available through remote access. Publication must
+occur no later than that first external event, even if the item is unfinished.
+
+An item is complete when its usable iteration is finished, its evaluation has
+reached a recorded conclusion, or the work is reasonably closed or abandoned.
+Completion is determined by the actual state of that item, not simply its label.
+A larger project remaining unfinished or a later iteration being planned does
+not defer or restart an already triggered deadline. Each later completed
+iteration carries its own publication duty. Negative or inconclusive outcomes
+are not grounds for postponement. This clause does not require perpetual
+maintenance, new research, or support.
+
+6  Narrow legally mandatory disclosure limits
+
+Withhold only the specific material whose disclosure
+would violate applicable privacy or data-protection law or legally enforceable
+third-party rights or legally binding pre-existing third-party obligations. Do
+not disclose protected personal information, another party's confidential
+information, or materials You have no right to release. The Licensor's Excluded
+Materials remain excluded under section 1, not licensed through this exception.
+
+By the same deadline, publish everything lawfully disclosable, a public
+explanation of the restriction as specific as law permits, and the maximum
+lawful reproducibility information. Use anonymized or aggregated data,
+nonidentifying descriptions, synthetic substitutes, or access instructions as
+appropriate; clearly label substitutions and resulting limitations. Do not
+claim full reproduction where restrictions prevent it. Release withheld
+materials when the legal restriction ceases, if still within Your control and
+lawfully releasable.
+
+This is not a discretionary confidentiality exemption. Commercial sensitivity,
+publication embargoes alone, pending papers, or a wish to keep results private
+do not excuse disclosure. Do not enter new nondisclosure agreements, ownership
+arrangements, or other contracts to defeat the duty. An avoidable rights conflict
+is not permission to proceed without compliance; obtain necessary permissions,
+remove the incompatible material, or do not undertake the conflicting use.
+Nothing requires an unlawful act.
+
+7  Existing rights and third-party licenses
+
+Preserve original copyright, authorship, attribution, and third-party license
+notices. Authors retain ownership of their contributions. These terms do not
+relicense third-party components, override their licenses, or authorize an
+incompatible combination or distribution. Independently licensed components
+must be clearly identified and supplied under their original terms.
+
+A valid earlier MIT or other license grant is not revoked or narrowed by these
+terms. A recipient entitled to use a particular version under such a grant may
+continue under it. These restrictions cannot be retroactively imposed
+by replacing a license file. A separately licensed new contribution does not
+remove rights already held in earlier material.
+
+8  Conditions and termination
+
+Permission is conditional on compliance. A material breach terminates the
+permissions granted to the breaching recipient, to the extent permitted by
+applicable law. Termination does not withdraw independent prior licenses or
+compliant downstream recipients' rights. Publication duties accrued through
+authorized use survive termination to the extent enforceable by applicable law.
+Termination does not require any unlawful disclosure. Statutory exceptions,
+limitations, and rights that cannot lawfully be restricted remain unaffected.
+
+9  Warranty and liability
+
+To the extent permitted by applicable law, the Software and accompanying
+materials are provided "AS IS", without warranties, including implied
+warranties of merchantability, fitness for a particular purpose, or
+noninfringement. To that extent, the relevant rights holders and contributors
+are not liable for claims, damages, or other liability arising from use
+or distribution of the Software or accompanying materials. Nothing excludes a
+warranty, duty, or liability that applicable law prohibits excluding or limiting.

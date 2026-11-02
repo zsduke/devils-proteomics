@@ -1,0 +1,29 @@
+Devil's Proteomics Public Edition
+Version 1.0.0-public-rc1
+Nov 2, 2026
+
+Contents
+Table import, column mapping, statistical analysis, quality summaries, local
+gene-set enrichment, HTML reports, volcano plots and MATLAB export.
+Separate local PDB coordinate viewing with observed-residue selection,
+user annotations and segmented sequence copy/export.
+
+License
+LICENSE.txt contains the Devil's Proteomics Education and Public Sharing License.
+RELEASE_MANIFEST.json identifies the files covered by that license and components
+under other terms. Earlier MIT permissions and third-party licenses are retained.
+This distribution does not include excluded private prediction technology.
+
+Verification
+36 earlier offline structure checks passed: 19 parser/selection/export checks,
+9 mocked-DOM viewer checks, 3 bundled-vendor parser/coordinate-data checks and
+5 static-route or in-process handler checks.
+Six release-change checks passed for license bytes, unchanged analysis logic,
+release metadata/routes, preserved viewer controls, synthetic report output and
+dependency discovery in an existing environment.
+
+The release archive and its file hashes are checked after clean extraction.
+These checks are not real-browser/WebGL acceptance or a fresh-environment install.
+Those two forms of acceptance remain unverified. See USER_GUIDE.txt for supported
+inputs and operational limits. No Python environment or dependency binaries are
+included. See THIRD_PARTY_NOTICES.txt for component details.

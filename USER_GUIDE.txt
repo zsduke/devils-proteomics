@@ -1,0 +1,288 @@
+Devil's Proteomics
+User guide
+Version 1.0.0-public-rc1
+
+1. Requirements and setup
+
+Required for table analysis: Python 3.12 and the packages in
+requirements-public.txt. Required for three-dimensional display: a compatible
+browser with WebGL. MATLAB R2020a or later is required to run the supplied
+volcano plotting script and produce a native FIG file.
+
+1. Extract the complete release into one directory.
+2. Read LICENSE.txt and confirm the release scope in RELEASE_MANIFEST.json.
+3. Create and activate a dedicated Python environment, for example:
+     python3.12 -m venv .venv
+   On macOS or Linux:
+     source .venv/bin/activate
+   On Windows PowerShell:
+     .venv\Scripts\Activate.ps1
+4. Install the listed packages from a source permitted by your institution:
+     python -m pip install -r requirements-public.txt
+5. Check dependency availability without starting a service:
+     python public_app.py --check
+6. Start the application with a new output location:
+     python public_app.py --port 8765 --data-dir ./analysis-data
+7. Open the printed http://127.0.0.1 address in your browser.
+
+The dependency check establishes package availability, not package compatibility
+or successful analysis. The package pins record an existing runtime; installation
+from a package index and operation on a fresh machine have not been verified.
+No environment, wheel or native library is included. Package installation can
+require network access. Normal analysis uses local inputs and bundled assets.
+
+The server binds to numeric loopback only. If the port is occupied, choose another
+port; an existing service is not stopped or reused. Keep the terminal open while
+using the application. Press Ctrl+C to stop it. Use the printed numeric address;
+a different hostname or browser origin may be rejected.
+
+For coordinate viewing only, open static/structure.html directly. The table
+analysis page requires the Python service.
+
+2. Prepare a table
+
+Accepted formats: .xlsx, .xls, .csv and .tsv, up to 25 MiB in the web interface.
+Supply protein identifiers or gene symbols plus one of the following:
+- Fold changes and differential-abundance p values or q values.
+- At least two distinct control and two distinct treatment abundance columns.
+
+Direct RAW, spectrum processing and instrument-file conversion are not supported.
+Generate a quantified table in the appropriate instrument or analysis software.
+Keep sample labels and measurement units with that table. Existing input files
+are not modified.
+
+1. In Proteomics, choose a file and select Inspect table.
+2. Check the preview, worksheet and header row. Header row 1 means the first row.
+3. Change Worksheet or Header row when needed, then select Apply worksheet / header.
+4. Check the suggested Protein ID, Gene, Description and statistic columns.
+   Automatic column detection is a starting point; confirm each mapping.
+5. Do not use protein-identification FDR as differential-abundance significance.
+
+3. Analyze supplied statistics
+
+1. Set Input mode to Supplied fold changes and p/q values.
+2. Map Fold change and the supplied p value or q value / FDR.
+3. Set Fold-change input scale to log2, log10, natural log or ratio.
+4. Set the p/q input scales to raw probability or -log10 as appropriate.
+5. Select q value / FDR or unadjusted p value as the significance metric.
+6. Set the absolute log-fold-change and p/q cutoffs; choose Both, Increased or
+   Decreased. The magnitude cutoff uses the selected horizontal log base.
+7. Review QC exclusion settings and select Analyze and create reports.
+
+When q values are supplied, they are used as supplied. Otherwise, q values are
+calculated by Benjamini-Hochberg adjustment over valid p values not excluded by
+QC. A selected probability cutoff must be greater than 0 and at most 1. Cutoff
+comparisons are inclusive, subject to floating-point tolerance.
+
+The horizontal and vertical log bases default to 2 and 10. To change them, enter
+for example {"x_base": 2, "y_base": 10} in Additional settings (JSON), replacing
+the values as required. Both bases must exceed 1. Visible form fields override
+the corresponding JSON settings. The web analysis generates both a report and
+a volcano plot. The command-line configuration can request either or both.
+
+4. Calculate statistics from replicates
+
+1. Set Input mode to Calculate from replicate columns.
+2. Select distinct Control replicates and Treatment replicates. A column cannot
+   belong to both groups. Use Ctrl/Cmd for multiple selections.
+3. Choose Welch t test, Student t test, Paired t test or Mann-Whitney U.
+4. Set Abundance input scale to match the table. Choose normalization, thresholds
+   and direction before running the analysis.
+5. For a paired test, use equal group sizes and verify that the selected column
+   lists have matching pair order. Reorder the input columns if necessary.
+6. Select Analyze and create reports.
+
+Tests operate on log2 abundance and are two-sided. Fold change is the mean
+log2 treatment abundance minus mean log2 control abundance. Raw abundances of
+zero or less are treated as missing. Differential tests do not impute missing
+values. Paired tests and their fold changes use complete pairs only. Optional
+median normalization centers sample medians on the log2 scale using eligible
+rows; recorded offsets appear in the outputs.
+
+5. Review results and export figures
+
+1. In Results from this session, select Download complete bundle.
+2. Extract the entire bundle into one directory to preserve relative links.
+3. Open report.html or volcano.html in a browser.
+4. Hover over a volcano point for a brief record. Click to retain its details.
+   Search by protein ID or gene, or select a significant row in the report.
+5. Check source rows, abundance, annotations, invalid-value notes and exclusions
+   before interpreting a hit list.
+
+Main files:
+  all_proteins.csv       All source rows and calculated fields.
+  top_hits.csv          Rows satisfying the chosen significance criteria.
+  manifest.json         Input identification, settings, method and run details.
+  report.html           Analysis summary and significant-row table.
+  volcano.html          Interactive volcano plot and record details.
+  volcano_matlab.zip    MAT data and a MATLAB plotting script.
+
+Duplicate identifier rows remain separate. Counts refer to rows, not necessarily
+unique proteins. Invalid or excluded rows are retained in CSV and omitted from
+the plot. Very small or zero probabilities use a plotting floor; significance
+decisions use the original values. Supplied annotations describe the input and
+are not independently verified. Differential abundance does not establish a
+protein's mechanism or the cause of the observed change.
+
+To create MATLAB figures:
+1. Extract volcano_matlab.zip into one directory.
+2. Open plot_volcano.m in MATLAB R2020a or later and run it.
+3. The script writes an editable FIG, vector PDF/SVG and 600 dpi PNG to
+   matlab_figures. Edit the script to change labels, axes, point sizes or colors.
+
+The ZIP supplies data and a script, not a pre-generated FIG. Saved significance
+flags and coordinates are preserved; the script does not recalculate statistics.
+The MATLAB script has not been executed as part of the stated offline checks.
+The blue/orange/gray palette is a scientific plotting choice, not a journal rule.
+
+6. Run quality control and PCA
+
+1. Select Abundance columns for QC and confirm the abundance scale.
+2. Review normalization, QC exclusion and PCA missing-data settings.
+3. Select QC, correlation and PCA.
+4. Download the complete QC bundle and inspect quality.html.
+
+Outputs include sample_metrics.csv, correlation.csv, correlation_counts.csv,
+protein_cv.csv, pca_scores.csv, pca_loadings.csv and quality.json. Correlations use
+complete pairs of observed values. PCA uses centered, unscaled log2 abundance.
+Choose complete rows or protein-mean filling for PCA only; this choice does not
+impute differential-test or correlation data. PCA requires at least two samples
+and two eligible protein rows and is unavailable without between-sample variance.
+PCA separation is not a significance test.
+
+7. Run local gene-set enrichment
+
+1. Complete a table analysis.
+2. Supply a local GMT file of at most 25 MiB. Each line must contain a set name,
+   description and at least one identifier, separated by tabs.
+3. Choose Gene symbol or Protein ID to match the GMT identifier namespace.
+4. Select Run enrichment and download the result bundle.
+
+Identifiers are exact, case-sensitive matches. The background is the set of
+unique identifiers with valid, nonexcluded differential tests, including those
+without GMT annotations. Ambiguous groups are excluded. Duplicate identifiers
+are collapsed, and any eligible significant row makes that identifier a hit.
+The calculation uses one-sided hypergeometric over-representation and BH
+adjustment across all eligible sets, including sets with zero hits.
+
+Outputs are enrichment.html, enrichment.csv and enrichment.json. No gene sets
+or database records are downloaded. An identifier mismatch can produce empty or
+misleading overlap; check the tested background and identifier namespace.
+
+8. View a PDB structure and select observed residues
+
+1. Open Structure and choose a .pdb or .ent file.
+2. Read the file summary and warnings. Choose the model and display style.
+3. Drag to rotate, scroll to zoom, or select Reset view.
+4. Click an atom to select its residue, or use the Residues list. Filter by chain
+   or residue and use Previous/Next to navigate. Select page adds visible rows.
+5. Review Selected sequence. Use Clear selection to start again.
+6. Use Copy FASTA, Download FASTA, Download JSON or Download TSV.
+
+Every residue identity includes model, chain, residue number and insertion code.
+Blank chains are distinct from named chains. Changing models clears the previous
+selection. Highlights, selection and exports use the same identities. If clipboard
+access is unavailable, use the displayed copy-text field. If 3D display fails,
+the residue list and sequence exports remain available for a parsed input.
+
+Supported PDB subset:
+- Fixed-column ASCII PDB, at most 10 MiB, 100,000 ATOM records in total,
+  20 models and 10,000 observed residues.
+- One implicit model, or explicit unique positive MODEL serials from 1 to 9999.
+- Blank/alphanumeric chain IDs, signed decimal residue numbers, and blank or
+  uppercase A-Z insertion codes.
+- ATOM records with explicit H, C, N, O, P, S or SE element fields.
+- Standard amino acids as single letters; other observed residue names as X.
+
+HETATM records are omitted with a count warning. Rejected inputs include mmCIF,
+PQR, hybrid-36 numbering, nonblank alternate locations, missing or unsupported
+ATOM element fields, charged ATOM records, duplicate atom identities, conflicting
+residue names, ambiguous residue order, reuse of a chain after TER, and HETATM
+records interleaved within an ATOM residue. The viewer does not silently repair
+these files. Export a compatible PDB with suitable structure software when needed.
+
+Sequences contain observed ATOM residues only. Chain changes, numeric or
+insertion-code gaps, skipped observed insertion residues, and omitted HETATM
+records between residues create separate segments. Missing coordinates and the
+complete protein sequence are not reconstructed. X means an observed residue
+with an unmapped name; it is not a count of missing residues.
+
+9. Add local residue annotations
+
+1. Load a PDB and select residues.
+2. Select Download template to obtain JSON containing exact residue keys.
+3. Edit label and type. Allowed types are domain, site and region.
+4. Load the file through Annotation JSON. Use its selection button to select the
+   annotation's residues in the displayed model.
+
+Schema:
+  {"annotations":[{"label":"Region name","type":"region",
+                    "residueKeys":["keys exported by this viewer"]}]}
+
+The JSON must be nonempty and at most 1 MiB. It may contain at most 100 annotations,
+with labels of at most 120 characters. Unknown keys and extra fields are rejected;
+URLs, code, scores and replacement coordinates are not accepted. Use keys from the
+same structure. A matching key does not verify annotation origin or biological
+identity. An annotation is supplied by the user, not calculated from coordinates.
+
+10. Command-line analysis
+
+Prepare a JSON configuration using the public controls or the configuration
+object from manifest.json. Save that object alone as settings.json, then run:
+
+  python proteomics_cli.py --input table.xlsx --config settings.json --output new_run
+
+The output directory must not already exist. Column names must match the input.
+The configuration file is limited to 1 MiB. The CLI uses a zero-based header
+index; the browser shows a one-based header row. Configuration options and their
+defaults are in proteomics.DEFAULTS. At least one of make_report or make_volcano
+must be true. The CLI also writes run_summary.json.
+
+11. Storage, troubleshooting and verification limits
+
+Uploads and results are saved in the chosen local data directory. Closing or
+restarting the application does not delete those files, but the current-session
+result list is not restored. Download bundles before ending the session. Failed
+analysis does not register a successful result; partial files can remain in its
+run directory. There is no background cancellation or resume procedure.
+
+For table errors, check the worksheet, header, column mappings, numeric scales
+and missing values. For an unavailable result after restart, use the previously
+saved bundle or files in the local data directory. For a rejected PDB, read the
+specific format error and export a compatible input. For a disabled 3D display,
+check browser WebGL support; do not infer that coordinates were rendered from a
+successful file parse alone.
+
+PDB and annotation files stay in the browser and are not sent to the table API.
+The release has no database connection. Reports may contain external documentation
+links; opening one can contact that external website. Local operation does not
+provide an absolute security guarantee. Protect the host, browser, file access
+and storage. Generated files can contain the uploaded scientific data; treat
+them according to your institution's requirements.
+
+The 36 recorded offline checks cover 19 PDB parser/selection/export cases,
+9 mocked-DOM viewer cases, 3 bundled 3Dmol data-parser/GLModel cases, and 5 simulated
+HTTP/static-route boundary cases. They do not establish real-browser/WebGL,
+clipboard, live HTTP, MATLAB or fresh-install behavior, and are not a count of
+statistical validation cases.
+
+12. License and permitted use
+
+The release is source-available under the Education and Public Sharing License
+in LICENSE.txt, effective Nov 2, 2026, with scope defined by RELEASE_MANIFEST.json.
+It is not an OSI open-source license. Eligible institutional noncommercial
+teaching, learning and academic research are subject to its full conditions.
+Commercial use and uses outside the stated eligibility require separate permission.
+
+Covered improvements and validation materials, including negative or inconclusive
+results, have public-sharing duties. The deadline is the earlier of 90 calendar
+days after completion or first external distribution, publication or service use.
+Read sections 4-6 before starting work with publication or disclosure restrictions.
+Legally protected material must not be unlawfully disclosed; the license defines
+the remaining disclosure duties and permitted substitutions.
+
+Excluded private prediction technology is not licensed by this release. Existing
+MIT grants for the identified earlier source modules remain valid. Third-party
+components retain their own terms. See THIRD_PARTY_NOTICES.txt and
+licenses/OWNER_MIT_SCOPE.txt. This guide summarizes use and does not replace or
+expand the license.

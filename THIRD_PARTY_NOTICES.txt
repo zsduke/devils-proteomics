@@ -1,0 +1,50 @@
+COMPONENT NOTICES
+Devil's Proteomics 1.0.0-public-rc1
+
+LICENSE.txt and RELEASE_MANIFEST.json specify the release terms and covered
+materials. Existing MIT permissions and third-party terms remain in force.
+This file does not replace the complete component notices.
+
+Earlier project source
+Seven reused modules retain Copyright (c) 2026 Zhenyao Sun under MIT.
+Complete notice: licenses/ZHENYAO_SUN_MIT_REUSED.txt.
+Source scope: licenses/OWNER_MIT_SCOPE.txt.
+
+3Dmol.js 2.5.5
+Complete BSD notice and incorporated GLmol, Three.js and jQuery notices:
+static/vendor/3Dmol-LICENSE.txt. The supplied notice identifies GLmol as dual
+MIT/LGPL3; the complete incorporated notices are retained.
+Build notice: static/vendor/3Dmol-min.js.LICENSE.txt.
+Version and source metadata: static/vendor/3Dmol-SOURCE.json.
+The distributed JavaScript and its supplied license notices are unchanged.
+No source map or package archive is included.
+
+KaTeX
+The JavaScript, stylesheet and 20 referenced WOFF2 fonts are supplied with the
+complete notice at static/vendor/katex/LICENSE.
+Source/version metadata: static/vendor/katex/SOURCE.json.
+
+Plotly
+Generated HTML embeds Plotly.js v4.1.1 from Plotly.py 7.1.0. Complete MIT notice and
+embedded-JavaScript copyright: licenses/PLOTLY_MIT.txt. Generated HTML also embeds
+KaTeX; applicable complete notices are included in each exported report HTML.
+
+Python runtime dependencies
+requirements-public.txt records NumPy, pandas, SciPy, openpyxl, xlrd, Plotly.py and
+lxml versions. Python packages, virtual environments, wheels and native libraries
+are not bundled. Listing an installation dependency does not authorize binary
+redistribution. Obtain dependencies under their respective licenses.
+
+xlrd 2.0.2 has a principal three-condition BSD notice and an earlier David Giffin
+four-condition notice. The latter includes advertising and redistribution
+acknowledgments. Its terms must not be summarized as BSD-3-Clause only.
+
+lxml 6.1.3 has a principal BSD-3-Clause notice plus ElementTree/PSF, ISO Schematron
+and other resource terms. Its LICENSES.txt describes RNG2Schtrn.xsl and
+XSD2Schtrn.xsl as unlicensed; both occur in the examined installed distribution.
+The upstream notice also mentions a GPL test.py, which was absent from that
+installation's RECORD; no inclusion of that file is asserted. Wheel notices
+additionally discuss iconv LGPL2.1, zlib, libxml2, libxslt and libexslt. Exact linked
+versions and linkage have not been verified. No such wheel, resource or native
+library is supplied in this release. Any later binary distribution requires
+separate review of its exact components, linkage, notices and permissions.

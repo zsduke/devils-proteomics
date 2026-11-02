@@ -1,0 +1,10 @@
+# Table analysis and report packages; versions recorded from an existing runtime.
+# Python environments, wheels and native libraries are not bundled.
+# Fresh installation is unverified. See THIRD_PARTY_NOTICES.txt for component terms.
+numpy==2.5.4
+pandas==3.1.0
+scipy==1.18.1
+openpyxl==3.1.5
+xlrd==2.0.2
+plotly==7.1.0
+lxml==6.1.3
