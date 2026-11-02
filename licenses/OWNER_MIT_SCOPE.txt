@@ -1,0 +1,21 @@
+RETAINED EARLIER PROJECT SOURCE NOTICE
+
+The following modules contain source copied or adapted from earlier project
+files whose accompanying license is MIT, Copyright (c) 2026 Zhenyao Sun:
+
+  date_display.py
+  figure_style.py
+  matlab_export.py
+  proteomics.py
+  proteomics_cli.py
+  proteomics_reports.py
+  quality.py
+
+The full unchanged notice is ZHENYAO_SUN_MIT_REUSED.txt in this directory.
+Existing valid MIT grants remain in effect and are not revoked or narrowed by
+the Education and Public Sharing License. This notice does not designate all
+new contributions or the entire release as MIT licensed.
+
+LICENSE.txt and RELEASE_MANIFEST.json specify coverage of eligible materials
+under the release license. Third-party components retain their original terms;
+see THIRD_PARTY_NOTICES.txt. Copyright ownership is not transferred.
