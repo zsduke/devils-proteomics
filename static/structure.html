@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; worker-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Structure | Devil's Proteomics</title>
+<link rel="stylesheet" href="./structure.css">
+<script src="./vendor/3Dmol-min.js" defer></script>
+<script src="./structure-core.js" defer></script>
+<script src="./structure-viewer.js" defer></script>
+</head>
+<body>
+<header class="masthead"><div><h1>Devil's Proteomics</h1><nav aria-label="Modules"><a id="proteomics-link" href="./index.html">Proteomics</a><a href="./structure.html" aria-current="page">Structure</a></nav></div><span class="mode">Offline mode</span></header>
+<main>
+<div class="heading"><h2>Structure viewer</h2><p>PDB coordinates and user-selected residue regions.</p></div>
+<p id="status" role="status" aria-live="polite">Choose a PDB file.</p><p id="error" role="alert" hidden></p>
+<section aria-label="Input" class="input-panel">
+<div class="input-grid"><label>PDB file<input id="pdb-file" type="file" accept=".pdb,.ent,text/plain"></label><label>Model<select id="model" disabled></select></label><label>Display<select id="display" disabled><option value="cartoon">Cartoon and sticks</option><option value="sticks">Sticks</option></select></label></div>
+<p id="file-summary"></p><p id="warnings" hidden></p>
+<details><summary>Supported input</summary><p>Fixed-column PDB protein ATOM records. Explicit atom elements are required. One model is displayed at a time. Alternate locations and unsupported records are rejected where they make residue identity ambiguous. HETATM records are excluded. mmCIF is not supported.</p><p>Sequences contain observed coordinate residues only. Numbering gaps are separated; missing residues are not reconstructed. Unknown residue names appear as X. Model, chain, residue number and insertion code identify every selection.</p></details>
+</section>
+<div class="workspace">
+<section class="view-panel" aria-labelledby="structure-title"><div class="section-title"><h3 id="structure-title">Coordinates</h3><button id="reset-view" type="button" disabled>Reset view</button></div><div id="viewer" role="img" aria-label="Interactive protein coordinates. Use the residue list to make keyboard-accessible selections."></div><p id="viewer-status">No coordinates loaded.</p><p>Drag to rotate. Scroll to zoom. Click an atom to select its residue.</p></section>
+<section class="residue-panel" aria-labelledby="residues-title"><h3 id="residues-title">Residues</h3><label>Chain<select id="chain" disabled><option value="*">All chains</option></select></label><label>Find residue<input id="residue-filter" type="search" placeholder="ALA, 42A or chain" disabled></label><div class="button-row"><button id="select-page" type="button" disabled>Select page</button><button id="clear-selection" type="button" disabled>Clear selection</button></div><p id="page-status"></p><div id="residue-list" class="residue-list"></div><div class="button-row"><button id="previous-page" type="button" disabled>Previous</button><button id="next-page" type="button" disabled>Next</button></div></section>
+</div>
+<section aria-labelledby="annotation-title"><h3 id="annotation-title">Annotations</h3><div class="input-grid"><label>Annotation JSON<input id="annotation-file" type="file" accept=".json,application/json" disabled></label><div class="label-button"><button id="annotation-template" type="button" disabled>Download template</button></div></div><p>Supply domain, site or region labels for exact residue keys. Labels describe your input; no sites are predicted.</p><div id="annotation-map"></div><div id="annotations"></div></section>
+<section aria-labelledby="sequence-title"><div class="section-title"><h3 id="sequence-title">Selected sequence</h3><span id="selection-count">0 residues selected</span></div><p>Separate segments preserve chain changes, numbering gaps and insertion codes.</p><div id="sequence-segments" class="sequence-segments"></div><div class="button-row"><button id="copy-sequence" type="button" disabled>Copy FASTA</button><button id="export-fasta" type="button" disabled>Download FASTA</button><button id="export-json" type="button" disabled>Download JSON</button><button id="export-tsv" type="button" disabled>Download TSV</button></div><label id="copy-fallback-label" hidden>Copy text<textarea id="copy-fallback" readonly rows="6"></textarea></label></section>
+<section class="scope" aria-label="Scope"><h3>Public Edition</h3><p>Coordinate viewing, model selection, residue highlighting, user annotations and observed-sequence exports.</p><p>Annotations are supplied by the user. Sequences describe observed residues.</p></section>
+<footer><p>Made by Zhenyao Sun<br>Department of Chemistry<br>Duke University<br>Public Edition 1.0.0-public-rc1. License and component notices accompany the distribution.</p><a href="./vendor/3Dmol-LICENSE.txt">3Dmol license</a><a href="./vendor/3Dmol-min.js.LICENSE.txt">Bundled notices</a></footer>
+</main>
+</body>
+</html>
